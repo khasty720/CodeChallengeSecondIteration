@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CodeChallange</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="Description" lang="en" content="John Hopkins Code Challange">
+	<meta name="author" content="Kyle Hasty">
+	<meta name="robots" content="index, follow">
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container">
+
+			<div class="header">
+				<h1 class="header-heading">John Hopkins Code Challange</h1>
+			</div>
+			<div class="nav-bar">
+				<ul class="nav">
+          <li><a><%= link_to 'Home', root_path %></a></li>
+					<li><a></a></li>
+				</ul>
+			</div>
+			<div class="content">
+
+        <div class="main">
+        <!--Rendered Content -->
+        <%= yield %>
+        </div>
+			</div>
+			<div class="footer">
+				&copy; Copyright 2016
+			</div>
+		</div>
+</body>
+</html>
