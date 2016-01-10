@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @passwords.each do |password| %>
+      <tr>
+        <td>
+            < <%= password.name %> >
+            <% if password.val_password == true %>
+                is acceptable.
+            <% else %>
+                is not acceptable.
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,24 @@
+if self.name.include? "a"
+  self.val_password = true
+  self.save
+end
+
+if self.name.include? "e"
+  self.val_password = true
+  self.save
+end
+
+if self.name.include? "i"
+  self.val_password = true
+  self.save
+end
+
+if self.name.include? "o"
+  self.val_password = true
+  self.save
+end
+
+if self.name.include? "u"
+  self.val_password = true
+  self.save
+end
