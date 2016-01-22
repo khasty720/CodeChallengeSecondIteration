@@ -1,9 +1,15 @@
 class Password < ActiveRecord::Base
 
+#Validators
+  validates :name, presence: true, length: { minimum: 1, maximum: 20 }
+
+#Callbacks
+
+
+#Methods
 require 'open-uri'
 
   def self.import(input)
-    puts "Input: " + input.path
     Password.delete_all
 
     File.open(input.path).readlines.each do |line|
@@ -22,7 +28,7 @@ require 'open-uri'
   end
 
   def self.write_to_file(passwords)
-      file = File.open("out.txt", "w")
+      file = File.open("say.out.txt", "w")
       passwords.each do |p|
         if p.val_password == true
           file.puts "<" + p.name + ">" + " is acceptable."

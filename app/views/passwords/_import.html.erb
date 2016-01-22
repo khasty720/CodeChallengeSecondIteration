@@ -1,7 +1,9 @@
-<h2>Import Password File</h2>
-<%= form_tag add_passwords_path, multipart: true do %>
+<h3>Import Password File</h3>
+<div class="well col-xs-3">
+<%= form_tag import_passwords_path, multipart: true do %>
 <%= file_field_tag :input %>
 <p></p>
-<%= submit_tag "Import File" %>
+<%= submit_tag("Import File", :class=>"btn btn-primary btn-sm")  %>
 <% end %>
+</div>
 </div>

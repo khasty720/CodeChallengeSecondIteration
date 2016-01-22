@@ -4,4 +4,12 @@
 
 $(document).on "page:change", ->
   $('#table-link').click ->
-    $('#password').fadeToggle()
+    $('#password-table').fadeToggle()
+
+$(document).on "page:change", ->
+  $('#import-link').click ->
+    $('#import-passwords').fadeToggle()
+
+$(document).on "page:change", ->
+  $('#create-password-link').click ->
+    $('#password-form').fadeToggle()

@@ -1,8 +1,9 @@
-<table class="table">
+<table class="table table-striped">
   <thead>
     <tr>
-      <th></th>
-      <th></th>
+      <th scope="row">Password</th>
+      <th scope="row"></th>
+      <th scope="row"></th>
     </tr>
   </thead>
   <tbody>
@@ -16,7 +17,10 @@
                 is not acceptable.
             <% end %>
         </td>
+        <td><%= link_to 'Edit', edit_password_path(password)%></td>
+        <td><%= link_to 'Delete', password, method: :delete%></td>
       </tr>
+
     <% end %>
   </tbody>
 </table>

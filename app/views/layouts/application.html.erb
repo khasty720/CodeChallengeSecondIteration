@@ -14,27 +14,36 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
 
-			<div class="header">
-				<h1 class="header-heading">John Hopkins Code Challange</h1>
-			</div>
-			<div class="nav-bar">
-				<ul class="nav">
-          <li><a><%= link_to 'Home', root_path %></a></li>
-					<li><a><%= link_to 'Passwords', passwords_path %></a></li>
-				</ul>
-			</div>
-			<div class="content">
+<!-- Navigation Bar -->
+<%= render 'layouts/navigation' %>
 
+  <!-- Page Content -->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+
+        <!-- Messages -->
+        <%= render 'layouts/messages' %>
 
         <!--Rendered Content -->
         <%= yield %>
 
-        <div class="footer">
-  				&copy; Copyright 2016
-  			</div>
-			</div>
-		</div>
+      </div>
+    </div>
+      <!-- /.row -->
+      <!-- footer -->
+      <hr>
+      			<footer class="margin-tb-3">
+      				<div class="row">
+      					<div class="col-sm-12">
+      						<p>Copyright &copy; CodeChallange 2016</p>
+      					</div>
+      				</div>
+      			</footer>
+      <!-- footer -->
+  </div>
+  <!-- /.container-fluid -->
+
 </body>
 </html>
