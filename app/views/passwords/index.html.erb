@@ -2,12 +2,15 @@
 <p id="notice"><%= notice %></p>
 
   <h1>IntelPass Password Validation</h1>
-</div>
+  <%= link_to 'Render Table', '#', id: "table-link" %>
+
 
 <div>
     <p><%= render 'import' %></p>
 </div>
 
-<div>
+<div id='password'>
     <p><%= render 'table' %></p>
+</div>
+
 </div>

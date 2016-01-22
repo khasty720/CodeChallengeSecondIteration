@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :passwords do
-    collection { post :import }
+    post 'import', on: :collection
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
