@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  resources :users do
+    get 'login', on: :collection
+  end
+
   resources :passwords do
     post 'import', on: :collection
   end
