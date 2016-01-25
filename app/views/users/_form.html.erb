@@ -23,8 +23,10 @@
   <div class="actions">
     <%= f.submit :class => "btn btn-primary btn-sm"%>
   </div>
+  <% if (@user.id.nil?) %>
   <div class="form-group">
     <%= link_to 'Generate Password', generate_password_users_path %>
   </div>
+  <% end %>
 <% end %>
 </div>

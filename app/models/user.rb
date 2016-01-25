@@ -94,6 +94,7 @@ class User < ActiveRecord::Base
   end
 
   def set_score
+    #Debugging Info
     #puts "Lenght Score: " + (User.lenght_score(self.password)).to_s
     #puts "Char Score: " + (User.char_score(self.password)).to_s
     score = (User.lenght_score(self.password) + User.char_score(self.password))

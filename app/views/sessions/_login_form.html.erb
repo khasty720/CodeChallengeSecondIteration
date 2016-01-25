@@ -10,10 +10,13 @@
     <%= f.text_field :password, class: 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit "Sign In", :class => "btn btn-primary btn-sm"%>
+    <%= f.submit "Sign In", :class => "btn btn-primary"%>
   </div>
 <% end %>
   <div class="form-group">
     <%= link_to 'Create New User Account', new_user_path %>
+  </div>
+  <div class="form-group">
+    <%= link_to 'Send Email to Emergency Contact', email_users_path %>
   </div>
 </div>

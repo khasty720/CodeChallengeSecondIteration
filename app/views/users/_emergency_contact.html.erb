@@ -1,0 +1,11 @@
+<div class="well col-sm-6 col-sm-push-3">
+<%= form_tag send_email_users_path do %>
+<div class="form-group">
+  <%= label_tag(:email, "Emergency Contact Email:") %>
+  <%= email_field_tag(:email) %>
+</div>
+<div class="actions">
+<%= submit_tag("Send Account Info", :class=>"btn btn-primary btn-sm")  %>
+</div>
+<% end %>
+</div>

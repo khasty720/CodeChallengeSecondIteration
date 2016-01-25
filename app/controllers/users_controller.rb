@@ -23,6 +23,22 @@ class UsersController < ApplicationController
     @user.generate_password
   end
 
+  def email
+  end
+
+  def send_email
+    if User.exists?(email: params[:email])
+      @user = User.find_by email: params[:email]
+
+      #Send Email
+      UserMailer.emergency_contact_email(@user).deliver_later
+      redirect_to login_path, notice: 'Account info sent to Emergency Contact.'
+    else
+      #Email not found
+      redirect_to email_users_path, alert: 'Emergency Contact not found.'
+    end
+  end
+
 
   def create
     @user = User.new(user_params)

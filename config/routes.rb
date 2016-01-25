@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     #Remove
     get 'login', on: :collection
     #Routes for send emergency contact
-    get 'send_email', on: :collection
-    post 'email', on: :collection
+    get 'email', on: :collection
+    post 'send_email', on: :collection
     #Rand Password
     get 'generate_password', on: :collection
   end
