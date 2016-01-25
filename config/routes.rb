@@ -2,13 +2,28 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  #User Session Routes
+  get 'login', to: 'sessions#new', as: 'login'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
+
   resources :users do
+    #Remove
     get 'login', on: :collection
+    #Routes for send emergency contact
+    get 'send_email', on: :collection
+    post 'email', on: :collection
+    #Rand Password
+    get 'generate_password', on: :collection
   end
 
   resources :passwords do
     post 'import', on: :collection
   end
+
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -6,11 +6,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-
-  def show
-  end
-
-
   def new
     @user = User.new
   end
@@ -21,6 +16,11 @@ class UsersController < ApplicationController
 
   def login
     @user = User.new
+  end
+
+  def generate_password
+    @user = User.new
+    @user.generate_password
   end
 
 
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to edit_user_path(@user), notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -65,6 +65,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:username, :password, :email)
+      params.require(:user).permit(:username, :password, :email, :score)
     end
 end
