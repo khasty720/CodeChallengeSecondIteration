@@ -1,5 +1,6 @@
 class PasswordsController < ApplicationController
   before_action :set_password, only: [:destroy, :edit, :update]
+  before_action :authenticate
 
   def index
     @passwords = Password.all

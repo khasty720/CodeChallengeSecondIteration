@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy', as: 'logout'
 
   resources :users do
-    #Remove
-    get 'login', on: :collection
     #Routes for send emergency contact
     get 'email', on: :collection
     post 'send_email', on: :collection

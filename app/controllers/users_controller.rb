@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate, only: [:index, :edit, :update, :destroy]
 
 
   def index
@@ -12,10 +13,6 @@ class UsersController < ApplicationController
 
 
   def edit
-  end
-
-  def login
-    @user = User.new
   end
 
   def generate_password
@@ -42,6 +39,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    #Sign in new users
+    sign_in(@user)
 
     respond_to do |format|
       if @user.save

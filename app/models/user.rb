@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true, format: { with: /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/,
   message: "format invalid" }
 
+  #Password Validations
+  has_secure_password
+
   validates :password, :presence => true, length: { minimum: 1, maximum: 20 },
     format: { with: /[aeiou]/,
     message: "must contain vowel" }
@@ -18,8 +21,8 @@ class User < ActiveRecord::Base
   validates :password, format: { without: /[A-Z]|\d/,
     message: "cannot contain uppercase letters or digits" }
 
+  #Callbacks
   before_save :downcase_password, :set_score
-
 
   #Methods
   def generate_password
