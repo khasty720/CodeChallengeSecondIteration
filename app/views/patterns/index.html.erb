@@ -1,0 +1,29 @@
+<h2>Password Score Patterns</h2>
+<hr>
+
+<div>
+  <%= link_to 'Create Pattern', new_pattern_path %>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Score Pattern</th>
+      <th>Description</th>
+      <th>Score Weight</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @patterns.each do |pattern| %>
+      <tr>
+        <td><%= pattern.score_pattern %></td>
+        <td><%= pattern.description %></td>
+        <td><%= pattern.weight.value %></td>
+        <td><%= link_to 'Edit', edit_pattern_path(pattern) %></td>
+        <td><%= link_to 'Delete', pattern, method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

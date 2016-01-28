@@ -1,0 +1,22 @@
+<div class="well col-sm-6 col-sm-push-3">
+<%= form_for(@pattern) do |f| %>
+
+  <%= render 'error_messages' %>
+
+  <div class="form-group">
+    <%= f.label :score_pattern %><br>
+    <%= f.text_field :score_pattern, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %><br>
+    <%= f.text_field :description, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :weight_id, "Score Weight" %><br>
+    <%= f.collection_select :weight_id, Weight.all, :id, :value, class: 'form-control' %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => "btn btn-primary btn-sm"%>
+  </div>
+<% end %>
+</div>

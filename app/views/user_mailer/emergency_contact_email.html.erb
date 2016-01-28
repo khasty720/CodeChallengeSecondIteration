@@ -128,7 +128,7 @@ ol li {
             <h2>CodeChallenge Account Information</h2>
 
             <p>Username: <%= @user.username %></p>
-            <p>Password: <%= @user.password %></p>
+            <p>Password: <%= @user.plain_text_pass %></p>
 
             <p>Click <a href="http://localhost:3000/login">here</a> to login to the CodeChallenge</p>
           </td>

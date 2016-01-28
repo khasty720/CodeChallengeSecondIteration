@@ -1,7 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+  #Score Weight Seeds
+  Weight.create(value: 2)
+  Weight.create(value: -2)
+
+  #Pattern Seeds
+  Pattern.create(score_pattern: '[aeiou]', description: "Password Contains Vowel", weight_id: 1)
+  Pattern.create(score_pattern: '([abcdfghijklmnpqrstuvwxyz])\1', description: "Password Contains two consecutive letters other then 'ee' and 'oo'.", weight_id: 2)
+  Pattern.create(score_pattern: '([a-z])\1\1', description: "Password contains uppercase letters or digits.", weight_id: 2)
+  Pattern.create(score_pattern: '.{8,}', description: "Length greater then 8.", weight_id: 1)
+  Pattern.create(score_pattern: '.{14,}', description: "Length greater then 14.", weight_id: 1)

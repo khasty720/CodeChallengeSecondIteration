@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160126002834) do
+ActiveRecord::Schema.define(version: 20160127043737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20160126002834) do
     t.datetime "updated_at",                   null: false
   end
 
+  create_table "patterns", force: :cascade do |t|
+    t.string   "score_pattern"
+    t.string   "description"
+    t.integer  "weight_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "patterns", ["weight_id"], name: "index_patterns_on_weight_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
@@ -30,6 +40,15 @@ ActiveRecord::Schema.define(version: 20160126002834) do
     t.datetime "updated_at",      null: false
     t.integer  "score"
     t.string   "password_digest"
+    t.string   "plain_text_pass"
+    t.string   "rating"
   end
 
+  create_table "weights", force: :cascade do |t|
+    t.integer  "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "patterns", "weights"
 end

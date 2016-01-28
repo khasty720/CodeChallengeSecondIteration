@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :patterns
   root 'home#index'
 
   #User Session Routes

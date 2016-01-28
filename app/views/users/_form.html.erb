@@ -24,9 +24,13 @@
     <%= f.submit :class => "btn btn-primary btn-sm"%>
   </div>
   <% if (@user.id.nil?) %>
-  <div class="form-group">
-    <%= link_to 'Generate Password', generate_password_users_path %>
-  </div>
+    <div class="form-group">
+      <%= link_to 'Generate Password', generate_password_users_path %>
+    </div>
+  <% else %>
+    <div class="form-group">
+      <%= link_to 'Delete Account', @user, method: :delete %>
+    </div>
   <% end %>
 <% end %>
 </div>

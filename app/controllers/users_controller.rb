@@ -1,11 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate, only: [:index, :edit, :update, :destroy]
+  before_action :authenticate, only: [:edit, :update, :destroy]
 
-
-  def index
-    @users = User.all
-  end
 
   def new
     @user = User.new
@@ -39,16 +35,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    #Sign in new users
-    sign_in(@user)
-
     respond_to do |format|
       if @user.save
+        #Sign in new users
+        sign_in(@user)
         format.html { redirect_to root_path, notice: 'Account was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -58,19 +51,19 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to edit_user_path(@user), notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
+    if user_signed_in
+      sign_out
+    end
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to root_path, notice: 'User Account was successfully deleted.' }
     end
   end
 

@@ -4,13 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   #User Session Methods
-  include SessionsHelper
-
-  #Authenticate User before action
-  def authenticate
-    if user_signed_in == false
-      redirect_to login_path, alert: 'Sign In Required'
-    end
-  end
+  include ApplicationHelper
 
 end
