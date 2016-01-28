@@ -15,6 +15,7 @@
  *= require bootstrap.min
  */
 
+ // Bootstrap Form Errors //
  @import "bootstrap";
 
  #error_explanation {
@@ -29,7 +30,7 @@
   padding: inherit;
   background-color: inherit;
 }
-
+// --- //
 
 body {
   background-color: #33333;

@@ -9,40 +9,16 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :password, :presence => true, length: { minimum: 1, maximum: 20 }
-=begin
-    ,format: { with: /[aeiou]/,
-    message: "must contain vowel" }
 
-  validates :password, format: { without: /([abcdfghijklmnpqrstuvwxyz])\1/,
-    message: "cannot contain two consecutive occurrences of the same letter, except for 'ee' or 'oo' " }
-
-  validates :password, format: { without: /([a-z])\1\1/,
-    message: "cannot contain three consecutive letters" }
-=end
   validates :password, format: { without: /\W|\d/,
     message: "cannot contain symbols or digits" }
 
   #Callbacks
   before_save :downcase_password, :set_score, :set_plain_text_pass
+
   #Methods
   def generate_password
     valid = false
-
-=begin
-    patterns = Pattern.joins(:weight).where("value > ?", 0)
-    #Update to use non brute force
-    while (valid == false) do
-      range = [*'a'..'z']
-      self.password = Array.new(16){range.sample}.join
-
-        if self.password =~ /#{pattern.score_pattern}/
-          valid = true
-        else
-          valid = false
-        end
-      end
-    end
-=end
 
     while (valid == false) do
       range = [*'a'..'z']
@@ -63,51 +39,6 @@ class User < ActiveRecord::Base
 
   end
 
-#Password Scoring
-=begin
-
-  def self.lenght_score(input)
-    score = 0
-    if input.length < 8
-      #Lenght Weak
-    elsif (input.length >= 8) && (input.length < 16)
-      #Lenght Medium
-      score += 1
-    else
-      #Lenght Strong
-      score += 2
-    end
-    return score
-  end
-
-  def self.char_score(input)
-    total = User.count_occurrence(input)
-    score = 0
-    if total < 5
-      #Count weak
-    elsif (total >= 5) && (total < 10)
-      #Count medium
-      score += 1
-    else
-      #Count Strong
-      score += 2
-    end
-    return score
-  end
-
-
-  def self.count_occurrence(input)
-    total = 0
-    #Check for occurrences of unqire letters
-    ("a".."z").each do |letter|
-      if input =~ /[#{letter}]/
-        total += 1
-      end
-    end
-    return total
-  end
-
-=end
   def sum_score
     patterns = Pattern.all
     self.score = 0
@@ -144,24 +75,18 @@ class User < ActiveRecord::Base
   end
 
 
-  #Callbacks
+  #Callback Methods
   protected
   def downcase_password
       self.password = self.password.downcase
   end
 
   def set_score
-    #Debugging Info
-    #puts "Lenght Score: " + (User.lenght_score(self.password)).to_s
-    #puts "Char Score: " + (User.char_score(self.password)).to_s
-    #score = (User.lenght_score(self.password) + User.char_score(self.password))
-    #self.score = score
-
     self.sum_score
     self.calc_score
-    puts "Score: " + self.score.to_s
-    puts "Rating: " + self.rating
-
+    #Debugging Info
+    #puts "Score: " + self.score.to_s
+    #puts "Rating: " + self.rating
   end
 
   def set_plain_text_pass
