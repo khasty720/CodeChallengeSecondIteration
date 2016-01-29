@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-
   root 'home#index'
+
+  #Password Statistics
+  get 'stats', to: 'stats#show', as: 'stats'
 
   #User Session Routes
   get 'login', to: 'sessions#new', as: 'login'
