@@ -21,10 +21,9 @@ class User < ActiveRecord::Base
     valid = false
 
     while (valid == false) do
-      #Splat Opertaor http://stackoverflow.com/questions/918449/what-does-the-unary-operator-do-in-this-ruby-code
+      #Splat Opertaor 
       range = [*'a'..'z']
 
-      #http://stackoverflow.com/questions/3482149/how-do-i-pick-randomly-from-an-array
       #Sample method picks randomly from array
       #join converts the array to a string
       self.password = Array.new(8) {range.sample}.join
