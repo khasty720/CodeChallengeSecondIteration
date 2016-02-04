@@ -3,14 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-$(document).on "page:change", ->
-  $('#table-link').click ->
-    $('#password-table').fadeToggle()
+jQuery(document).on "page:change", ->
+  jQuery('#table-link').click ->
+    jQuery('#password-table').fadeToggle()
 
-$(document).on "page:change", ->
-  $('#import-link').click ->
-    $('#import-passwords').fadeToggle()
+jQuery(document).on "page:change", ->
+  jQuery('#import-link').click ->
+    jQuery('#import-passwords').fadeToggle()
 
-$(document).on "page:change", ->
-  $('#create-password-link').click ->
-    $('#password-form').fadeToggle()
+jQuery(document).on "page:change", ->
+  jQuery('#create-password-link').click ->
+    jQuery('#password-form').fadeToggle()
