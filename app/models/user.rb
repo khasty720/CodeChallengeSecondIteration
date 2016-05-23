@@ -90,8 +90,8 @@ class User < ActiveRecord::Base
     self.sum_score
     self.calc_score
     #Debugging Info
-    #puts "Score: " + self.score.to_s
-    #puts "Rating: " + self.rating
+    logger.debug "[DEBUG] Score: " + self.score.to_s
+    logger.debug "[DEBUG] Rating: " + self.rating
   end
 
   def set_plain_text_pass

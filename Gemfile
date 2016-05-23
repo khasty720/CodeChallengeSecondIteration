@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 group :development do
   gem "better_errors"
+  gem 'shog'
 end
 
 gem 'bcrypt', '~> 3.1.7'
